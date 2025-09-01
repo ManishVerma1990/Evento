@@ -1,0 +1,1 @@
+{"root":["./client/src/app.ts","./dist/client/app.d.ts","./dist/server/app.d.ts","./dist/server/config/db.config.d.ts","./dist/server/shared/user.d.ts","./dist/server/src/app.d.ts","./server/src/app.ts","./server/src/config/db.config.ts","./shared/user.ts"],"errors":true,"version":"5.9.2"}

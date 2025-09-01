@@ -1,0 +1,30 @@
+{
+  "name": "evento",
+  "version": "1.0.0",
+  "description": "event management and automation and analysis",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev:server": "ts-node-dev server/src/index.ts",
+    "dev:client": "vite --config client/vite.config.ts",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build": "tsc -b && vite build --config client/vite.config.ts",
+    "run": "nodemon ./dist/server/app.js \"tsc -b --watch\""
+  },
+  "author": "manish verma",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "concurrently": "^9.2.1",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "joi": "^18.0.1",
+    "mysql2": "^3.14.3",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/joi": "^17.2.2",
+    "@types/node": "^24.3.0"
+  }
+}

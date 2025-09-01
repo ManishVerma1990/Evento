@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext" /* Emit modern JS (ES2020 works fine with latest Node) */,
+    "lib": ["EsNext", "DOM"] /* Include ES2020 APIs like Array.find, Promise, etc. */,
+    "module": "nodenext" /* Node.js module system */,
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["shared/*"]
+    }
+  },
+  "files": [],
+  "include": [],
+  "references": [{ "path": "./client" }, { "path": "./server" }, { "path": "./shared" }],
+  "exclude": ["node_modules", "./dist"]
+}

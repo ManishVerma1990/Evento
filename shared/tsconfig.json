@@ -4,5 +4,5 @@
     "declaration": true,
     "outDir": "../dist/shared"
   },
-  "include": ["*.ts"]
+  "include": ["*.ts", "validators/validators.d.ts", "validators/validators.ts"]
 }

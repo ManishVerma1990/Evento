@@ -7,6 +7,7 @@ import userRoute from "./routes/userRoute.js";
 import eventRoute from "./routes/eventRoute.js";
 
 const app = express();
+console.log("what");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

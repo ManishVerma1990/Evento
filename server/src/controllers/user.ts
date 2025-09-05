@@ -3,9 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import db from "../config/db.config.js";
 // import type { User } from "../../../shared/types.ts";
 import { RowDataPacket } from "mysql2";
-import { UserSchema, User } from "../../../shared/validators/validators.ts";
-import { valid } from "joi";
-import { ZodError } from "zod";
+import { UserSchema, User } from "../../../shared/validators/validators.js";
 
 async function getUserIdByEmail(email: String) {
   try {
@@ -18,13 +16,14 @@ async function getUserIdByEmail(email: String) {
 
 async function newUser(req: Request, res: Response) {
   const userId = uuidv4();
+
   const user: User = req.body;
   const validUser: any = UserSchema.safeParse(user);
+
   if (validUser.success) {
     console.log("Invalid user");
     validUser.error.forEach((element: any) => {
       console.log({ path: element.path, msg: element.messege });
-      console.log("msg: ", element.path);
     });
     return;
   }
@@ -41,6 +40,7 @@ async function newUser(req: Request, res: Response) {
       user.password,
       user.phone,
     ]);
+    console.log(result);
   } catch (err) {
     console.log(err);
   }
@@ -63,14 +63,14 @@ async function login(req: Request, res: Response) {
 }
 
 async function update(req: Request, res: Response) {
-  const userId = "ed0e0cc3-58be-41b7-a581-d125640e4d7c";
   const user = req.body;
+
   const validUser: any = UserSchema.safeParse(user);
+
   if (validUser.success) {
     console.log("Invalid user");
     validUser.error.forEach((element: any) => {
       console.log({ path: element.path, msg: element.messege });
-      console.log("msg: ", element.path);
     });
     return;
   }
@@ -79,7 +79,7 @@ async function update(req: Request, res: Response) {
       user.name,
       user.password,
       user.phone,
-      userId,
+      user.userId,
     ]);
     console.log(result);
   } catch (err) {
@@ -88,9 +88,9 @@ async function update(req: Request, res: Response) {
 }
 
 async function remove(req: Request, res: Response) {
-  const userId = "ed0e0cc3-58be-41b7-a581-d125640e4d7c";
+  // const userId = "ed0e0cc3-58be-41b7-a581-d125640e4d7c";
   try {
-    const [result] = await db.execute("DELETE FROM  users WHERE  userId=?", [userId]);
+    const [result] = await db.execute("DELETE FROM  users WHERE  userId=?", [req.body.userId]);
     console.log(result);
   } catch (err) {
     console.log(err);

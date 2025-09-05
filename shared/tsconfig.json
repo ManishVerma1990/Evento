@@ -1,8 +1,17 @@
 {
   "compilerOptions": {
+    "target": "ESNext" /* Emit modern JS (ES2020 works fine with latest Node) */,
+    "lib": ["EsNext", "DOM"] /* Include ES2020 APIs like Array.find, Promise, etc. */,
+    "module": "nodenext" /* Node.js module system */,
+    "moduleResolution": "nodenext",
     "composite": true,
     "declaration": true,
-    "outDir": "../dist/shared"
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "outDir": "./",
+    "rootDir": "./"
   },
-  "include": ["*.ts", "validators/validators.d.ts", "validators/validators.ts"]
+  "include": ["**/*.ts", "**/*.d.ts"],
+  "exclude": ["../dist", "node_modules"]
 }

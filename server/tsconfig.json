@@ -5,8 +5,11 @@
     "rootDir": "./src",
     "outDir": "../dist/server",
     "composite": true,
-    "noEmit": true,
-    "allowImportingTsExtensions": true
+    // "noEmit": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+    // "allowImportingTsExtensions": true
   },
   "include": ["src/**/*"]
   //   "exclude": ["node_modules", "../dist/client"]

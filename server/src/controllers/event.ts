@@ -1,10 +1,10 @@
-import express from "express";
 import { v4 as uuidv4 } from "uuid";
 import db from "../config/db.config.js";
-import type { Event } from "../../../shared/types.ts";
+// import type { Event } from "../../../shared/types.ts";
 import { RowDataPacket } from "mysql2";
 import { Request, Response } from "express";
-import { EventSchema } from "@shared/validators/validators.ts";
+import { EventSchema, Event } from "../../../shared/validators/validators.js";
+import { formatDate } from "../utils/formatDate.js";
 
 async function listEvents(req: Request, res: Response) {
   try {
@@ -20,13 +20,14 @@ async function listEvents(req: Request, res: Response) {
 async function newEvent(req: Request, res: Response) {
   const eventId = uuidv4();
   const organizerId = "ed0e0cc3-58be-41b7-a581-d125640e4d7c";
+
   const event: Event = req.body;
   const validEvent: any = EventSchema.safeParse(event);
+
   if (validEvent.success) {
     console.log("Invalid Event");
     validEvent.error.forEach((element: any) => {
       console.log({ path: element.path, msg: element.messege });
-      console.log("msg: ", element.path);
     });
     return;
   }
@@ -38,13 +39,13 @@ async function newEvent(req: Request, res: Response) {
       "INSERT INTO events (eventId, organizerId, title, description, category, address, startTime, endTime, capacity, price) VALUES(?,?,?,?,?,?,?,?,?,?)",
       [
         eventId,
-        organizerId,
+        event.organizerId,
         event.title,
         event.description,
         event.category,
         event.address,
-        event.startTime,
-        event.endTime,
+        formatDate(event.startTime),
+        formatDate(event.endTime),
         event.capacity,
         event.price,
       ]
@@ -57,17 +58,17 @@ async function newEvent(req: Request, res: Response) {
 }
 
 async function update(req: Request, res: Response) {
-  const eventId = "8a275385-f9e0-4456-9839-92693a8fe81e";
-  const event: Event = req.body;
+  const event = req.body;
   const validEvent: any = EventSchema.safeParse(event);
+
   if (validEvent.success) {
     console.log("Invalid Event");
     validEvent.error.forEach((element: any) => {
       console.log({ path: element.path, msg: element.messege });
-      console.log("msg: ", element.path);
     });
     return;
   }
+
   try {
     const [result] = await db.execute(
       "UPDATE events SET  title= ?, description= ?, category= ?, address= ?, startTime= ?, endTime= ?, capacity= ?, price= ? WHERE eventId = ?",
@@ -76,11 +77,11 @@ async function update(req: Request, res: Response) {
         event.description,
         event.category,
         event.address,
-        event.startTime,
-        event.endTime,
+        formatDate(event.startTime),
+        formatDate(event.endTime),
         event.capacity,
         event.price,
-        eventId,
+        event.eventId,
       ]
     );
     console.log(result);
@@ -92,9 +93,9 @@ async function update(req: Request, res: Response) {
 }
 
 async function remove(req: Request, res: Response) {
-  const eventId = "8a275385-f9e0-4456-9839-92693a8fe81e";
   try {
-    db.execute("DELETE FROM events WHERE eventId = ?", [eventId]);
+    const [result] = await db.execute("DELETE FROM events WHERE eventId = ?", [req.body.eventId]);
+    console.log(result);
   } catch (err) {
     console.log(err);
   }

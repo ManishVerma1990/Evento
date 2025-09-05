@@ -10,7 +10,9 @@ declare const UserSchema: z.ZodObject<{
     }>;
     phone: z.ZodNumber;
 }, z.core.$strip>;
+type User = z.infer<typeof UserSchema>;
 declare const EventSchema: z.ZodObject<{
+    organizerId: z.ZodString;
     title: z.ZodString;
     description: z.ZodDefault<z.ZodString>;
     category: z.ZodDefault<z.ZodString>;
@@ -26,4 +28,18 @@ declare const EventSchema: z.ZodObject<{
         cancelled: "cancelled";
     }>;
 }, z.core.$strip>;
-export { UserSchema, EventSchema };
+type Event = z.infer<typeof EventSchema>;
+declare const RegSchema: z.ZodObject<{
+    eventId: z.ZodUUID;
+    userId: z.ZodUUID;
+    regType: z.ZodString;
+    checkIn: z.ZodBoolean;
+    paymentStatus: z.ZodEnum<{
+        pending: "pending";
+        paid: "paid";
+        failed: "failed";
+        refunded: "refunded";
+    }>;
+}, z.core.$strip>;
+type Registration = z.infer<typeof RegSchema>;
+export { UserSchema, User, EventSchema, Event, RegSchema, Registration };

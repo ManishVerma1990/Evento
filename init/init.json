@@ -1,0 +1,217 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "Alice123",
+      "email": "alice@example.com",
+      "password": "Password1@",
+      "role": "user",
+      "phone": 9876543210
+    },
+    {
+      "id": "u2",
+      "name": "Bob_Organizer",
+      "email": "bob.org@example.com",
+      "password": "StrongPass2$",
+      "role": "organizer",
+      "phone": 9123456789
+    },
+    {
+      "id": "u3",
+      "name": "Charlie_Admin",
+      "email": "charlie.admin@example.com",
+      "password": "AdminPass3#",
+      "role": "admin",
+      "phone": 9012345678
+    },
+    {
+      "id": "u4",
+      "name": "Daisy99",
+      "email": "daisy@example.com",
+      "password": "PassWord4@",
+      "role": "user",
+      "phone": 9234567890
+    },
+    {
+      "id": "u5",
+      "name": "Evan_Org",
+      "email": "evan.org@example.com",
+      "password": "OrgPass5$",
+      "role": "organizer",
+      "phone": 9345678901
+    },
+    {
+      "id": "u6",
+      "name": "Fiona77",
+      "email": "fiona@example.com",
+      "password": "FionaPass6%",
+      "role": "user",
+      "phone": 9456789012
+    },
+    {
+      "id": "u7",
+      "name": "George_User",
+      "email": "george@example.com",
+      "password": "GeorgePass7@",
+      "role": "user",
+      "phone": 9567890123
+    },
+    {
+      "id": "u8",
+      "name": "Hannah_Admin",
+      "email": "hannah.admin@example.com",
+      "password": "AdminPass8*",
+      "role": "admin",
+      "phone": 9678901234
+    },
+    {
+      "id": "u9",
+      "name": "Ian_Organizer",
+      "email": "ian.org@example.com",
+      "password": "OrgPass9@",
+      "role": "organizer",
+      "phone": 9789012345
+    },
+    {
+      "id": "u10",
+      "name": "Judy88",
+      "email": "judy@example.com",
+      "password": "JudyPass10@",
+      "role": "user",
+      "phone": 9890123456
+    }
+  ],
+  "events": [
+    {
+      "id": "e1",
+      "organizerId": "u2",
+      "title": "Eco Awareness Workshop",
+      "description": "An interactive session on reducing plastic waste.",
+      "category": "environment",
+      "address": "Green Hall, City Campus",
+      "startTime": "2025-09-12T10:00:00.000Z",
+      "endTime": "2025-09-12T13:00:00.000Z",
+      "capacity": 100,
+      "price": 0,
+      "status": "upcoming"
+    },
+    {
+      "id": "e2",
+      "organizerId": "u5",
+      "title": "Tree Plantation Drive",
+      "description": "Join us to plant 500 saplings in the local park.",
+      "category": "sustainability",
+      "address": "Central Park, Main Street",
+      "startTime": "2025-09-15T09:00:00.000Z",
+      "endTime": "2025-09-15T12:00:00.000Z",
+      "capacity": 200,
+      "price": 50,
+      "status": "upcoming"
+    },
+    {
+      "id": "e3",
+      "organizerId": "u9",
+      "title": "Clean Beach Campaign",
+      "description": "Help clean and restore the coastline.",
+      "category": "community",
+      "address": "Sunny Beach, Coastal Road",
+      "startTime": "2025-09-20T08:00:00.000Z",
+      "endTime": "2025-09-20T11:00:00.000Z",
+      "capacity": 150,
+      "price": 20,
+      "status": "upcoming"
+    },
+    {
+      "id": "e4",
+      "organizerId": "u2",
+      "title": "E-Waste Collection Drive",
+      "description": "Collect and recycle old electronics.",
+      "category": "recycling",
+      "address": "Tech Center, Block A",
+      "startTime": "2025-09-25T10:00:00.000Z",
+      "endTime": "2025-09-25T15:00:00.000Z",
+      "capacity": 120,
+      "price": 0,
+      "status": "upcoming"
+    },
+    {
+      "id": "e5",
+      "organizerId": "u5",
+      "title": "Renewable Energy Seminar",
+      "description": "Learn about solar and wind power solutions.",
+      "category": "energy",
+      "address": "Auditorium, City College",
+      "startTime": "2025-09-30T09:00:00.000Z",
+      "endTime": "2025-09-30T12:00:00.000Z",
+      "capacity": 180,
+      "price": 100,
+      "status": "upcoming"
+    }
+  ],
+  "registrations": [
+    {
+      "id": "r1",
+      "eventId": "e1",
+      "userId": "u1",
+      "regType": "student",
+      "checkIn": false,
+      "paymentStatus": "paid"
+    },
+    {
+      "id": "r2",
+      "eventId": "e2",
+      "userId": "u4",
+      "regType": "student",
+      "checkIn": false,
+      "paymentStatus": "pending"
+    },
+    {
+      "id": "r3",
+      "eventId": "e3",
+      "userId": "u6",
+      "regType": "volunteer",
+      "checkIn": false,
+      "paymentStatus": "paid"
+    },
+    {
+      "id": "r4",
+      "eventId": "e1",
+      "userId": "u7",
+      "regType": "student",
+      "checkIn": false,
+      "paymentStatus": "paid"
+    },
+    {
+      "id": "r5",
+      "eventId": "e4",
+      "userId": "u10",
+      "regType": "student",
+      "checkIn": false,
+      "paymentStatus": "failed"
+    },
+    {
+      "id": "r6",
+      "eventId": "e5",
+      "userId": "u1",
+      "regType": "student",
+      "checkIn": false,
+      "paymentStatus": "paid"
+    },
+    {
+      "id": "r7",
+      "eventId": "e2",
+      "userId": "u6",
+      "regType": "student",
+      "checkIn": false,
+      "paymentStatus": "paid"
+    },
+    {
+      "id": "r8",
+      "eventId": "e3",
+      "userId": "u10",
+      "regType": "volunteer",
+      "checkIn": false,
+      "paymentStatus": "refunded"
+    }
+  ]
+}
